@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="list-group list-group-flush" style="margin-left: 6cm; margin-top: 2cm;padding-left: 0;">Question List</h2>
+        <table class="table table-striped list-group list-group-flush" style="margin-left: 6cm; margin-top: 2cm;padding-left: 0;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Question</th>
+                    <th scope="col">Quiz</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ul class="list-group list-group-flush" style="margin-left: 5cm; padding-left: 0;">
+                    {% for question in questions %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ question.name }}</td>
+                        <td>{{ question.quiz.name }}</td>
+                        <td>
+                            <a href="{% url 'questionDetail' question.id %}" class="btn btn-info btn-sm">View</a>
+                            <a href="{% url 'questionDelete' question.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </ul>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+    <div class="container ml-5 ">
+        <h2 class="list-group list-group-flush" style="margin-left: 6cm; margin-top: 2cm;padding-left: 0;">Question Detail</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="list-group list-group-flush" style="margin-left: 5cm; padding-left: 0;">{{ question.name }}</h5>
+                <ul class="list-group list-group-flush" style="margin-left: 5cm; padding-left: 0;">
+                    {% for option in options %}
+                    <li class="list-group-item bg-success text-white mb-2" style="border-radius: 5px;">
+                        {{ option.name }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div class="text-right">
+                    <a href="{% url 'questionDelete' question.id %}" class="btn btn-danger mt-3">Delete Question</a>
+                    <a href="{% url 'optionCreate' question.id %}" class="btn btn-info mt-3">Option Create</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
